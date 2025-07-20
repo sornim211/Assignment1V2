@@ -31,7 +31,7 @@ class MovieViewModel : ViewModel() {
     }
 
     // Get full movie details by title
-    fun getMovieDetails(title: String) {
+    fun getMovieDetails(title: String, string: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val detail = OmdbHttpClient.getMovieDetails(title)

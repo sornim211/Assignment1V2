@@ -12,7 +12,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMovieDetailsBinding
     private val viewModel: MovieViewModel by viewModels()
-    private val apiKey = "b1adca2" // Use the same key from OmdbHttpClient
+    private val apiKey = "b1adca2"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class MovieDetailsActivity : AppCompatActivity() {
             return
         }
 
-        viewModel.getMovieDetails(apiKey, title)
+        viewModel.getMovieDetails(apiKey,"title")
 
         viewModel.selectedMovie.observe(this) { movie ->
             binding.textTitle.text = movie.title
