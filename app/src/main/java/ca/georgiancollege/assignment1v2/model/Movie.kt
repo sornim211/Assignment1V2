@@ -1,57 +1,53 @@
 package ca.georgiancollege.assignment1v2.model
 
-// Importing Gson for JSON mapping
 import com.google.gson.annotations.SerializedName
 
 // Model for individual movie details
 data class Movie(
     @SerializedName("Title")
-    val title: String,              // Movie name
+    val title: String,
 
     @SerializedName("Year")
-    val year: String,               // Release year
+    val year: String,
 
     @SerializedName("Rated")
-    val rated: String,              // Age rating
+    val rated: String,
 
     @SerializedName("Released")
-    val released: String,           // Release date
+    val released: String,
 
     @SerializedName("Runtime")
-    val runtime: String,            // Duration
+    val runtime: String,
 
     @SerializedName("Genre")
-    val genre: String,              // Genre type
+    val genre: String,
 
     @SerializedName("Director")
-    val director: String,           // Director info
+    val director: String,
 
     @SerializedName("Writer")
-    val writer: String,             // Writer info
+    val writer: String,
 
     @SerializedName("Actors")
-    val actors: String,             // Main cast
+    val actors: String,
 
     @SerializedName("Plot")
-    val plot: String,               // Summary
+    val plot: String,
 
     @SerializedName("Poster")
-    val poster: String,             // Poster URL
+    val poster: String,
 
     @SerializedName("imdbRating")
-    val imdbRating: String,         // IMDb score
+    val imdbRating: String,
 
     @SerializedName("Production")
-    val production: String          // Studio name
+    val production: String
 )
 
-annotation class SerializedName
-
-// Model for search result from API
+// Model for search results
 data class MovieSearchResponse(
-    val Search: List<Movie>?,       // Found movies
-    val totalResults: String?,      // Count of results
-    val Response: String,           // API response flag
-    val Error: String? = null       // Error text if failed
+    val Search: List<Movie>?,
+    val totalResults: String?,
+    val Response: String,
+    val Error: String? = null
 )
-
