@@ -1,14 +1,10 @@
-package ca.georgiancollege.assignment1v2
+package ca.georgiancollege.assignment1v2.view
 
 import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import ca.georgiancollege.assignment1v2.R
 import ca.georgiancollege.assignment1v2.databinding.ActivityMainBinding
-import kotlin.toString
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding;
