@@ -45,6 +45,8 @@ data class Movie(
     val production: String          // Studio name
 )
 
+annotation class SerializedName
+
 // Model for search result from API
 data class MovieSearchResponse(
     val Search: List<Movie>?,       // Found movies

@@ -4,4 +4,7 @@
     <string name="search_button">Search</string>
     <string name="search_movies">Search movies...</string>
     <string name="search">Search</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="back">← Back</string>
+    <string name="plot">Plot</string>
 </resources>
