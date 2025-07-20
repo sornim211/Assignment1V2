@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Assignment1V2</string>
+    <string name="search_hint">Enter movie name</string>
+    <string name="search_button">Search</string>
+    <string name="search_movies">Search movies...</string>
+    <string name="search">Search</string>
 </resources>
