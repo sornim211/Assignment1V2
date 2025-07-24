@@ -13,7 +13,9 @@
         android:hint="@string/search_movies"
         android:minHeight="48dp"
         android:padding="10dp"
-        android:backgroundTint="#6200EE" />
+        android:backgroundTint="#6200EE"
+        android:imeOptions="actionSearch"
+        android:inputType="text"/>
 
     <Button
         android:id="@+id/buttonSearch"

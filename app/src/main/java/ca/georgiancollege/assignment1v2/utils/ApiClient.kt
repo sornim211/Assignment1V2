@@ -1,42 +1,30 @@
 package ca.georgiancollege.assignment1v2.utils
 
-import android.util.Log
-import com.google.gson.Gson
-import ca.georgiancollege.assignment1v2.model.Movie
-import ca.georgiancollege.assignment1v2.model.MovieSearchResponse
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.net.HttpURLConnection
-import java.net.URL
+import okhttp3.Callback
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
 
-object OmdbHttpClient {
-    private const val BASE_URL = "https://www.omdbapi.com/"
-    private const val API_KEY = "b1adca2" // Api key
+object ApiClient {
+    private val client = OkHttpClient()
+    private val JSON = "application/json; charset=utf-8".toMediaType()
 
-    fun searchMovies(query: String): MovieSearchResponse? {
-        val urlString = "$BASE_URL?s=$query&apikey=$API_KEY"
-        return makeRequest(urlString, MovieSearchResponse::class.java)
+    fun get(url: String, callback: Callback) {
+        val request = Request.Builder()
+            .url(url)
+            .build()
+
+        client.newCall(request).enqueue(callback)
     }
 
-    fun getMovieDetails(title: String): Movie? {
-        val urlString = "$BASE_URL?t=$title&apikey=$API_KEY"
-        return makeRequest(urlString, Movie::class.java)
-    }
+    fun post(url: String, json: String, callback: Callback) {
+        val body = json.toRequestBody(JSON)
+        val request = Request.Builder()
+            .url(url)
+            .post(body)
+            .build()
 
-    private fun <T> makeRequest(urlString: String, clazz: Class<T>): T? {
-        return try {
-            val url = URL(urlString)
-            val conn = url.openConnection() as HttpURLConnection
-            conn.requestMethod = "GET"
-
-            val reader = BufferedReader(InputStreamReader(conn.inputStream))
-            val response = reader.readText()
-            reader.close()
-
-            Gson().fromJson(response, clazz)
-        } catch (e: Exception) {
-            Log.e("HTTP_ERROR", "Request failed: ${e.message}", e)
-            null
-        }
+        client.newCall(request).enqueue(callback)
     }
 }

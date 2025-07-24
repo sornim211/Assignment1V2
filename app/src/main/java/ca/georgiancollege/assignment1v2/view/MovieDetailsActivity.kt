@@ -1,25 +1,27 @@
 package ca.georgiancollege.assignment1v2.view
 
+// Required Android & app imports
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import ca.georgiancollege.assignment1v2.databinding.ActivityMovieDetailsBinding
 import ca.georgiancollege.assignment1v2.viewmodel.MovieViewModel
-import com.bumptech.glide.Glide
 
+// Shows details of a selected movie
 class MovieDetailsActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMovieDetailsBinding
-    private val viewModel: MovieViewModel by viewModels()
-    private val apiKey = "b1adca2"
+    private lateinit var binding: ActivityMovieDetailsBinding     // View binding
+    private val viewModel: MovieViewModel by viewModels()         // ViewModel
+    private val apiKey = "8c568b95"                               // OMDB key
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMovieDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val title = intent.getStringExtra("MOVIE_TITLE")
+        val title = intent.getStringExtra("MOVIE_TITLE") // Get movie title
 
         if (title.isNullOrEmpty()) {
             Toast.makeText(this, "No title found", Toast.LENGTH_SHORT).show()
@@ -27,8 +29,9 @@ class MovieDetailsActivity : AppCompatActivity() {
             return
         }
 
-        viewModel.getMovieDetails(apiKey,"title")
+        viewModel.getMovieDetails(apiKey, title) // Fetch details
 
+        // Observe movie data
         viewModel.selectedMovie.observe(this) { movie ->
             binding.textTitle.text = movie.title
             binding.textDetails.text =
@@ -44,10 +47,14 @@ class MovieDetailsActivity : AppCompatActivity() {
                 .into(binding.imagePoster)
         }
 
+        // Observe errors
         viewModel.error.observe(this) { msg ->
-            Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+            msg?.let {
+                Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+            }
         }
 
+        // Back button
         binding.buttonBack.setOnClickListener {
             finish()
         }
