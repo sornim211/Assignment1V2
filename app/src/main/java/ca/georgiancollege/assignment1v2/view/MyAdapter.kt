@@ -7,8 +7,8 @@ import ca.georgiancollege.assignment1v2.databinding.MovieItemBinding
 import ca.georgiancollege.assignment1v2.model.MovieSummary
 
 class MyAdapter(
-    private val movies: List<MovieSummary>,                 // Use MovieSummary for search results
-    private val onItemClick: (MovieSummary) -> Unit         // Callback with MovieSummary
+    private val movies: List<MovieSummary>,
+    private val onItemClick: (MovieSummary) -> Unit
 ) : RecyclerView.Adapter<MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

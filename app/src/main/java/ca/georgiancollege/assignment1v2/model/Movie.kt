@@ -2,7 +2,7 @@ package ca.georgiancollege.assignment1v2.model
 
 import com.google.gson.annotations.SerializedName
 
-// Model for search results (summary)
+// basic search results
 data class MovieSummary(
     @SerializedName("Title") val title: String,
     @SerializedName("Year") val year: String,
@@ -11,7 +11,7 @@ data class MovieSummary(
     @SerializedName("Poster") val poster: String
 )
 
-// Model for full movie details
+// Full movie details
 data class MovieDetails(
     @SerializedName("Title") val title: String,
     @SerializedName("Year") val year: String,
@@ -28,7 +28,6 @@ data class MovieDetails(
     @SerializedName("Production") val production: String
 )
 
-// Model for search API response
 data class MovieSearchResponse(
     @SerializedName("Search") val search: List<MovieSummary>?,
     @SerializedName("totalResults") val totalResults: String?,

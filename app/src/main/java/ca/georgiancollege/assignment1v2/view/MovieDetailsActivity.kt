@@ -14,7 +14,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMovieDetailsBinding     // View binding
     private val viewModel: MovieViewModel by viewModels()         // ViewModel
-    private val apiKey = "8c568b95"                               // OMDB key
+    private val apiKey = "b1adca2"                               // OMDB key
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
